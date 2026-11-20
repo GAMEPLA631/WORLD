@@ -3,949 +3,552 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎵 Lyrical Studio — Svet na písanie hudobných textov</title>
+<title>🎵 Lyrical Studio Pro — Svet na písanie hudobných textov</title>
 <style>
-/* ============================================
-   MODERNÝ DIZAJN — DARK NEON THEME (MAX FX)
-   ============================================ */
-:root{
-  --bg:#07070d;
-  --bg2:#0f0f1b;
-  --card:rgba(23, 23, 43, 0.72);
-  --card2:rgba(30, 30, 56, 0.65);
-  --accent:#7c3aed;
-  --accent-glow:rgba(124, 58, 237, 0.55);
-  --accent2:#a78bfa;
-  --neon:#06b6d4;
-  --neon-glow:rgba(6, 182, 212, 0.5);
-  --pink:#ec4899;
-  --pink-glow:rgba(236, 72, 153, 0.5);
-  --text:#f1f1fc;
-  --muted:#8e8ea8;
-  --border:rgba(139, 139, 190, 0.16);
-  --border-focus:rgba(167, 139, 250, 0.6);
-  --success:#10b981;
-  --ease:cubic-bezier(0.16, 1, 0.3, 1);
-  --bounce:cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
+:root{--bg:#05050b;--bg2:#0b0b16;--bg3:#111122;--card:rgba(18,19,36,.76);--card2:rgba(26,28,52,.72);--accent:#7c3aed;--accent-glow:rgba(124,58,237,.55);--accent2:#a78bfa;--neon:#06b6d4;--neon-glow:rgba(6,182,212,.5);--pink:#ec4899;--pink-glow:rgba(236,72,153,.48);--text:#f4f4ff;--muted:#9496b8;--border:rgba(148,150,210,.16);--border-focus:rgba(6,182,212,.65);--success:#10b981;--ease:cubic-bezier(.16,1,.3,1);--bounce:cubic-bezier(.34,1.56,.64,1)}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,-apple-system,sans-serif}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
-  position:relative;
-}
-
-/* Dynamické neónové plávajúce hmloviny */
-body::before{
-  content:'';
-  position:fixed;
-  inset:-50%;
-  width:200%;
-  height:200%;
-  background:
-    radial-gradient(ellipse 700px 500px at 20% 20%, rgba(124,58,237,.25), transparent 70%),
-    radial-gradient(ellipse 600px 450px at 80% 25%, rgba(6,182,212,.18), transparent 70%),
-    radial-gradient(ellipse 700px 600px at 50% 85%, rgba(236,72,153,.16), transparent 75%);
-  pointer-events:none;
-  z-index:0;
-  animation:auroraDrift 22s ease-in-out infinite alternate;
-}
-
-/* Jemná hi-tech audio mriežka */
-body::after{
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                   linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size:40px 40px;
-  pointer-events:none;
-  z-index:0;
-}
-
-@keyframes auroraDrift{
-  0%{transform:rotate(0deg) scale(1) translate(0, 0);}
-  50%{transform:rotate(3deg) scale(1.08) translate(-30px, 20px);}
-  100%{transform:rotate(-3deg) scale(0.96) translate(30px, -20px);}
-}
-
-.container{
-  position:relative;
-  z-index:1;
-  max-width:1420px;
-  margin:0 auto;
-  padding:24px 20px;
-  animation:pageEnter 0.8s var(--ease) both;
-}
-
-@keyframes pageEnter{
-  from{opacity:0;transform:translateY(18px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* ---------- HEADER ---------- */
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 28px;
-  margin-bottom:26px;
-  background:var(--card);
-  backdrop-filter:blur(24px) saturate(180%);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);
-  border:1px solid var(--border);
-  border-radius:24px;
-  box-shadow:0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,0.03);
-  position:relative;
-  overflow:hidden;
-}
-
-header::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg, transparent, rgba(167,139,250,0.5), rgba(6,182,212,0.5), transparent);
-}
-
+body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;position:relative}
+body::before{content:'';position:fixed;inset:-50%;width:200%;height:200%;background:radial-gradient(ellipse 780px 540px at 16% 18%,rgba(124,58,237,.24),transparent 70%),radial-gradient(ellipse 680px 480px at 84% 20%,rgba(6,182,212,.2),transparent 70%),radial-gradient(ellipse 750px 600px at 50% 88%,rgba(236,72,153,.16),transparent 75%);pointer-events:none;z-index:0;animation:auroraDrift 22s ease-in-out infinite alternate}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;z-index:0}
+@keyframes auroraDrift{0%{transform:rotate(0deg) scale(1) translate(0,0)}50%{transform:rotate(2.5deg) scale(1.07) translate(-28px,18px)}100%{transform:rotate(-2.5deg) scale(.97) translate(28px,-18px)}}
+.container{position:relative;z-index:1;max-width:1480px;margin:0 auto;padding:22px 20px 30px;animation:pageEnter .75s var(--ease) both}
+@keyframes pageEnter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:16px 24px;margin-bottom:20px;background:linear-gradient(135deg,rgba(22,23,44,.88),rgba(14,15,30,.85));backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);border:1px solid var(--border);border-radius:22px;box-shadow:0 16px 45px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06);position:relative;overflow:hidden}
+header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--neon),var(--pink),transparent)}
 .logo{display:flex;align-items:center;gap:16px}
-
-.logo-icon{
-  font-size:32px;
-  width:58px;
-  height:58px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg, var(--accent), var(--pink));
-  border-radius:18px;
-  box-shadow:0 0 25px var(--accent-glow), inset 0 1px 1px rgba(255,255,255,0.4);
-  animation:floatIcon 4s ease-in-out infinite alternate;
-  cursor:default;
-  transition:transform 0.4s var(--bounce);
-}
-
-.logo-icon:hover{
-  transform:scale(1.12) rotate(6deg);
-}
-
-@keyframes floatIcon{
-  0%{transform:translateY(0px) rotate(0deg);box-shadow:0 0 22px var(--accent-glow);}
-  100%{transform:translateY(-5px) rotate(-2deg);box-shadow:0 8px 32px var(--pink-glow);}
-}
-
-.logo h1{
-  font-size:23px;
-  font-weight:800;
-  letter-spacing:.6px;
-  line-height:1.2;
-}
-
-.logo h1 span{
-  background:linear-gradient(90deg, var(--accent2), var(--neon), var(--pink), var(--accent2));
-  background-size:300% 100%;
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  animation:textGradientMove 6s linear infinite;
-}
-
-@keyframes textGradientMove{
-  0%{background-position:0% 50%}
-  100%{background-position:300% 50%}
-}
-
-.logo p{font-size:12.5px;color:var(--muted);letter-spacing:0.2px}
-
-.badge{
-  padding:7px 16px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:0.3px;
-  background:linear-gradient(135deg, rgba(16,185,129,.14), rgba(6,182,212,.14));
-  color:var(--success);
-  border:1px solid rgba(16,185,129,.35);
-  box-shadow:0 0 20px rgba(16,185,129,0.15);
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  position:relative;
-}
-
-.badge::before{
-  content:'';
-  width:6px;height:6px;border-radius:50%;
-  background:var(--success);
-  box-shadow:0 0 8px var(--success);
-  animation:blinkDot 1.8s ease-in-out infinite;
-}
-
-@keyframes blinkDot{
-  0%,100%{opacity:1;transform:scale(1);}
-  50%{opacity:0.4;transform:scale(0.7);}
-}
-
-/* ---------- HLAVNÝ GRID ---------- */
-.workspace{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-@media(max-width:1000px){.workspace{grid-template-columns:1fr}}
-
-/* ---------- PANELY ---------- */
-.panel{
-  background:var(--card);
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-  border:1px solid var(--border);
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 16px 45px rgba(0,0,0,.45);
-  display:flex;
-  flex-direction:column;
-  transition:border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-  position:relative;
-}
-
-.panel:hover{
-  border-color:rgba(167,139,250,0.3);
-  box-shadow:0 20px 50px rgba(0,0,0,.55), 0 0 28px rgba(124,58,237,0.12);
-  transform:translateY(-2px);
-}
-
-.panel-header{
-  padding:15px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:var(--card2);
-  border-bottom:1px solid var(--border);
-}
-
-.panel-title{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;letter-spacing:0.3px}
-
-.panel-title .dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 12px var(--accent);
-  position:relative;
-  animation:dotPulsePurple 2.2s infinite ease-in-out;
-}
-
-.panel-title .dot.blue{
-  background:var(--neon);
-  box-shadow:0 0 12px var(--neon);
-  animation:dotPulseCyan 2.2s infinite ease-in-out;
-}
-
-.panel-title .dot.green{
-  background:var(--success);
-  box-shadow:0 0 12px var(--success);
-  animation:dotPulseGreen 2.2s infinite ease-in-out;
-}
-
-@keyframes dotPulsePurple{
-  0%,100%{transform:scale(1);box-shadow:0 0 8px var(--accent);}
-  50%{transform:scale(1.3);box-shadow:0 0 18px var(--accent), 0 0 28px var(--accent);}
-}
-@keyframes dotPulseCyan{
-  0%,100%{transform:scale(1);box-shadow:0 0 8px var(--neon);}
-  50%{transform:scale(1.3);box-shadow:0 0 18px var(--neon), 0 0 28px var(--neon);}
-}
-@keyframes dotPulseGreen{
-  0%,100%{transform:scale(1);box-shadow:0 0 8px var(--success);}
-  50%{transform:scale(1.3);box-shadow:0 0 18px var(--success), 0 0 28px var(--success);}
-}
-
-/* ---------- ŠTRUKTÚRA PIESNE ---------- */
-.structure-section{padding:18px 22px;border-bottom:1px solid var(--border)}
-.structure-section h3{
-  font-size:12.5px;
-  text-transform:uppercase;
-  letter-spacing:1.8px;
-  color:var(--muted);
-  margin-bottom:14px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.structure-section h3::after{content:'';flex:1;height:1px;background:linear-gradient(90deg, var(--border), transparent)}
-
-.tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:9px}
-
-.tag-btn{
-  padding:10px 6px;
-  border-radius:12px;
-  cursor:pointer;
-  background:var(--card2);
-  border:1px solid var(--border);
-  color:var(--text);
-  font-size:12px;
-  font-weight:600;
-  text-align:center;
-  transition:all 0.25s var(--bounce);
-  position:relative;
-  overflow:hidden;
-}
-
-/* Laser sweep efekt */
-.tag-btn::after, .tool-btn::after{
-  content:'';
-  position:absolute;
-  top:-50%;
-  left:-80%;
-  width:45%;
-  height:200%;
-  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-  transform:rotate(25deg);
-  transition:0.65s ease;
-  opacity:0;
-  pointer-events:none;
-}
-
-.tag-btn:hover::after, .tool-btn:hover::after{
-  left:130%;
-  opacity:1;
-}
-
-.tag-btn:hover{
-  background:linear-gradient(135deg, var(--accent), var(--pink));
-  border-color:rgba(255,255,255,0.3);
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:0 6px 20px var(--accent-glow);
-  color:#fff;
-}
-.tag-btn:active{transform:translateY(1px) scale(0.97)}
-.tag-btn .tag-icon{
-  display:block;
-  font-size:17px;
-  margin-bottom:4px;
-  transition:transform 0.3s var(--bounce);
-}
+.logo-icon{font-size:30px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--pink));border-radius:16px;box-shadow:0 0 26px var(--accent-glow),inset 0 1px 1px rgba(255,255,255,.45);animation:floatIcon 4s ease-in-out infinite alternate;cursor:default;transition:transform .4s var(--bounce);flex-shrink:0}
+.logo-icon:hover{transform:scale(1.12) rotate(6deg)}
+@keyframes floatIcon{0%{transform:translateY(0) rotate(0);box-shadow:0 0 22px var(--accent-glow)}100%{transform:translateY(-4px) rotate(-2deg);box-shadow:0 8px 32px var(--pink-glow)}}
+.logo h1{font-size:23px;font-weight:800;letter-spacing:.5px;line-height:1.15;display:flex;align-items:center;gap:10px}
+.logo h1 span{background:linear-gradient(90deg,var(--accent2),var(--neon),var(--pink),var(--accent2));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:textGradientMove 6s linear infinite}
+.pro-pill{font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 8px;border-radius:6px;background:rgba(6,182,212,.16);color:var(--neon);border:1px solid rgba(6,182,212,.4);-webkit-background-clip:border-box;background-clip:border-box;animation:none}
+@keyframes textGradientMove{0%{background-position:0 50%}100%{background-position:300% 50%}}
+.logo p{font-size:12.5px;color:var(--muted);letter-spacing:.2px;margin-top:2px}
+.header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.eq-bars{display:flex;align-items:flex-end;gap:3px;height:24px;padding:4px 10px;background:rgba(11,11,22,.65);border:1px solid var(--border);border-radius:10px}
+.eq-bar{width:3px;border-radius:3px;background:linear-gradient(180deg,var(--neon),var(--accent),var(--pink));animation:eqBounce 1.1s ease-in-out infinite alternate}
+.eq-bar:nth-child(1){height:40%;animation-delay:0s}.eq-bar:nth-child(2){height:85%;animation-delay:.2s}.eq-bar:nth-child(3){height:55%;animation-delay:.4s}.eq-bar:nth-child(4){height:95%;animation-delay:.1s}.eq-bar:nth-child(5){height:65%;animation-delay:.35s}.eq-bar:nth-child(6){height:45%;animation-delay:.5s}
+@keyframes eqBounce{0%{transform:scaleY(.35);opacity:.7}100%{transform:scaleY(1);opacity:1}}
+.stage-launch-btn{padding:8px 15px;border-radius:999px;border:1px solid rgba(236,72,153,.45);background:linear-gradient(135deg,rgba(124,58,237,.28),rgba(236,72,153,.28));color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .25s var(--bounce);box-shadow:0 0 18px rgba(236,72,153,.2)}
+.stage-launch-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 26px var(--pink-glow);border-color:var(--pink)}
+.badge{padding:7px 15px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px;background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(6,182,212,.14));color:var(--success);border:1px solid rgba(16,185,129,.35);box-shadow:0 0 20px rgba(16,185,129,.15);display:inline-flex;align-items:center;gap:6px}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--success);box-shadow:0 0 8px var(--success);animation:blinkDot 1.8s ease-in-out infinite}
+@keyframes blinkDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.studio-rack{background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:22px;margin-bottom:22px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.rack-tabs{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(11,12,24,.75);border-bottom:1px solid var(--border);overflow-x:auto}
+.rack-tab{padding:9px 15px;border-radius:12px;border:1px solid transparent;background:transparent;color:var(--muted);font-size:12.5px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:all .25s var(--ease)}
+.rack-tab:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.rack-tab.active{color:#fff;background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(6,182,212,.28));border-color:rgba(167,139,250,.45);box-shadow:0 4px 16px rgba(124,58,237,.25)}
+.rack-tab .num-badge{font-size:10px;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.1);color:var(--neon)}
+.rack-body{padding:16px 20px}
+.rack-pane{display:none;animation:fadeSlide .28s var(--ease)}
+.rack-pane.active{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.rack-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rack-label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill-btn{padding:7px 13px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s var(--bounce);display:inline-flex;align-items:center;gap:6px}
+.pill-btn:hover{border-color:var(--neon);color:var(--neon);transform:translateY(-2px);box-shadow:0 4px 14px rgba(6,182,212,.2)}
+.pill-btn:active{transform:scale(.96)}
+.pill-btn.glow-purple{background:linear-gradient(135deg,var(--accent),var(--pink));border-color:rgba(255,255,255,.25);color:#fff;box-shadow:0 4px 16px var(--accent-glow)}
+.pill-btn.glow-purple:hover{color:#fff;border-color:#fff;box-shadow:0 6px 24px var(--pink-glow)}
+.pill-btn.glow-cyan{background:linear-gradient(135deg,#0891b2,#7c3aed);border-color:rgba(6,182,212,.45);color:#fff;box-shadow:0 4px 16px var(--neon-glow)}
+.pill-btn.glow-cyan:hover{color:#fff;box-shadow:0 6px 24px var(--neon-glow)}
+.note-chip{min-width:36px;justify-content:center;font-size:14px;padding:6px 10px}
+.ai-input{padding:8px 13px;border-radius:10px;background:var(--bg2);border:1px solid var(--border);color:var(--text);font-size:12.5px;outline:none;transition:border-color .2s}
+.ai-input:focus{border-color:var(--neon)}
+.ai-output{margin-top:12px;max-height:220px;overflow-y:auto;background:rgba(10,11,22,.9);border:1px solid var(--border);border-radius:14px;padding:13px 16px;font-size:13.5px;line-height:1.7;white-space:pre-wrap;color:var(--text)}
+.genre-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.genre-pill{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(15,16,32,.75);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s var(--ease)}
+.genre-pill:hover{color:var(--text);border-color:var(--accent2)}
+.genre-pill.active{background:linear-gradient(135deg,var(--accent),var(--neon));color:#fff;border-color:transparent;box-shadow:0 3px 14px var(--accent-glow)}
+.genre-pill.edm-tag{border-color:rgba(6,182,212,.28)}
+.idea-card{background:rgba(11,12,24,.8);border:1px solid var(--border);border-radius:16px;padding:15px 18px;display:grid;grid-template-columns:1.2fr 1.4fr;gap:16px}
+@media(max-width:900px){.idea-card{grid-template-columns:1fr}}
+.idea-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.meta-tag{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:8px;background:rgba(124,58,237,.16);color:var(--accent2);border:1px solid rgba(124,58,237,.3)}
+.meta-tag.cyan{background:rgba(6,182,212,.14);color:var(--neon);border-color:rgba(6,182,212,.3)}
+.meta-tag.pink{background:rgba(236,72,153,.14);color:#f472b6;border-color:rgba(236,72,153,.3)}
+.idea-desc{font-size:13.5px;line-height:1.6;color:#d6d8f0;margin-bottom:12px}
+.idea-hooks{display:flex;flex-direction:column;gap:8px}
+.hook-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;background:rgba(26,28,52,.65);border:1px solid var(--border);border-radius:10px;font-size:12.5px;color:var(--text)}
+.hook-item button{padding:4px 10px;border-radius:7px;border:1px solid rgba(6,182,212,.4);background:rgba(6,182,212,.15);color:var(--neon);font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;transition:all .2s}
+.hook-item button:hover{background:var(--neon);color:#05050b}
+.metro-box{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.bpm-readout{display:flex;align-items:baseline;gap:6px;padding:10px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:14px}
+.bpm-readout b{font-size:28px;font-weight:800;color:var(--neon);text-shadow:0 0 14px var(--neon-glow);font-variant-numeric:tabular-nums}
+.bpm-readout span{font-size:11px;color:var(--muted);font-weight:700}
+.beat-leds{display:flex;gap:8px;align-items:center}
+.beat-led{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid var(--border);transition:all .08s ease}
+.beat-led.on{background:var(--neon);box-shadow:0 0 16px var(--neon);transform:scale(1.25)}
+.beat-led.accent.on{background:var(--pink);box-shadow:0 0 18px var(--pink);transform:scale(1.35)}
+input[type="range"]{accent-color:var(--neon);cursor:pointer}
+.analyzer-grid{display:grid;grid-template-columns:240px 1fr;gap:16px}
+@media(max-width:850px){.analyzer-grid{grid-template-columns:1fr}}
+.analyzer-stats{display:flex;flex-direction:column;gap:8px;background:rgba(11,12,24,.8);border:1px solid var(--border);border-radius:14px;padding:14px}
+.stat-line{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.stat-line b{color:var(--accent2)}
+.rhyme-list{max-height:175px;overflow-y:auto;background:rgba(11,12,24,.8);border:1px solid var(--border);border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.rhyme-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.02)}
+.rhyme-badges{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.syl-badge{font-size:11px;padding:2px 7px;border-radius:6px;background:rgba(148,150,184,.14);color:var(--muted);font-weight:700}
+.rhyme-tag{font-size:11px;padding:2px 8px;border-radius:6px;font-weight:800}
+.workspace{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:1020px){.workspace{grid-template-columns:1fr}}
+.panel{background:var(--card);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5);display:flex;flex-direction:column;transition:border-color .35s var(--ease),box-shadow .35s var(--ease);position:relative}
+.panel:hover{border-color:rgba(167,139,250,.34);box-shadow:0 22px 56px rgba(0,0,0,.6),0 0 30px rgba(124,58,237,.12)}
+.panel-header{padding:15px 22px;display:flex;align-items:center;justify-content:space-between;background:var(--card2);border-bottom:1px solid var(--border)}
+.panel-title{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;letter-spacing:.3px}
+.panel-title .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:dotPulsePurple 2.2s infinite ease-in-out}
+.panel-title .dot.blue{background:var(--neon);box-shadow:0 0 12px var(--neon);animation:dotPulseCyan 2.2s infinite ease-in-out}
+@keyframes dotPulsePurple{0%,100%{transform:scale(1);box-shadow:0 0 8px var(--accent)}50%{transform:scale(1.3);box-shadow:0 0 18px var(--accent),0 0 28px var(--accent)}}
+@keyframes dotPulseCyan{0%,100%{transform:scale(1);box-shadow:0 0 8px var(--neon)}50%{transform:scale(1.3);box-shadow:0 0 18px var(--neon),0 0 28px var(--neon)}}
+.structure-section{padding:16px 22px;border-bottom:1px solid var(--border)}
+.structure-section h3{font-size:11.5px;text-transform:uppercase;letter-spacing:1.8px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.structure-section h3::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:8px}
+.tag-btn{padding:9px 6px;border-radius:12px;cursor:pointer;background:rgba(20,21,42,.75);border:1px solid var(--border);color:var(--text);font-size:11.5px;font-weight:600;text-align:center;transition:all .25s var(--bounce);position:relative;overflow:hidden}
+.tag-btn::after,.tool-btn::after{content:'';position:absolute;top:-50%;left:-80%;width:45%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:rotate(25deg);transition:.65s ease;opacity:0;pointer-events:none}
+.tag-btn:hover::after,.tool-btn:hover::after{left:130%;opacity:1}
+.tag-btn:hover{background:linear-gradient(135deg,var(--accent),var(--pink));border-color:rgba(255,255,255,.3);transform:translateY(-3px) scale(1.03);box-shadow:0 6px 20px var(--accent-glow);color:#fff}
+.tag-btn:active{transform:translateY(1px) scale(.97)}
+.tag-btn .tag-icon{display:block;font-size:16px;margin-bottom:3px;transition:transform .3s var(--bounce)}
 .tag-btn:hover .tag-icon{transform:scale(1.22) rotate(-5deg)}
-
-/* ---------- NÁSTROJE ---------- */
-.tools-section{
-  padding:15px 22px;
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  border-bottom:1px solid var(--border);
-  background:rgba(15,15,27,0.3);
-}
-
-.tool-btn{
-  padding:10px 17px;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:13px;
-  font-weight:600;
-  background:var(--card2);
-  border:1px solid var(--border);
-  color:var(--text);
-  transition:all 0.25s var(--bounce);
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  position:relative;
-  overflow:hidden;
-}
-
-.tool-btn:hover{
-  border-color:var(--accent2);
-  color:var(--accent2);
-  transform:translateY(-2px);
-  box-shadow:0 5px 16px rgba(124,58,237,.25);
-  background:rgba(40,40,70,0.6);
-}
-.tool-btn:active{transform:translateY(1px) scale(0.98)}
-
-.tool-btn.primary{
-  background:linear-gradient(135deg, var(--accent), var(--pink));
-  background-size:160% 100%;
-  border:1px solid rgba(255,255,255,0.25);
-  color:#fff;
-  box-shadow:0 4px 18px var(--accent-glow);
-  animation:btnPulse 3.5s ease-in-out infinite alternate;
-}
-
-@keyframes btnPulse{
-  0%{box-shadow:0 4px 18px var(--accent-glow);}
-  100%{box-shadow:0 6px 26px var(--pink-glow);}
-}
-
-.tool-btn.primary:hover{
-  box-shadow:0 8px 30px var(--pink-glow);
-  transform:translateY(-2px) scale(1.02);
-  background-position:100% 0;
-  color:#fff;
-}
-
-/* ---------- TEXTAREA ---------- */
+.tools-section{padding:14px 22px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:rgba(12,13,25,.45)}
+.tool-btn{padding:9px 15px;border-radius:11px;cursor:pointer;font-size:12.5px;font-weight:600;background:var(--card2);border:1px solid var(--border);color:var(--text);transition:all .25s var(--bounce);display:inline-flex;align-items:center;gap:7px;position:relative;overflow:hidden}
+.tool-btn:hover{border-color:var(--accent2);color:var(--accent2);transform:translateY(-2px);box-shadow:0 5px 16px rgba(124,58,237,.25);background:rgba(40,42,76,.72)}
+.tool-btn:active{transform:translateY(1px) scale(.98)}
+.tool-btn.primary{background:linear-gradient(135deg,var(--accent),var(--pink));background-size:160% 100%;border:1px solid rgba(255,255,255,.25);color:#fff;box-shadow:0 4px 18px var(--accent-glow);animation:btnPulse 3.5s ease-in-out infinite alternate}
+@keyframes btnPulse{0%{box-shadow:0 4px 18px var(--accent-glow)}100%{box-shadow:0 6px 26px var(--pink-glow)}}
+.tool-btn.primary:hover{box-shadow:0 8px 30px var(--pink-glow);transform:translateY(-2px) scale(1.02);background-position:100% 0;color:#fff}
+.tool-btn.notes-quick{background:linear-gradient(135deg,rgba(6,182,212,.2),rgba(124,58,237,.25));border-color:rgba(6,182,212,.45);color:var(--neon)}
+.tool-btn.notes-quick:hover{border-color:var(--neon);color:#fff;box-shadow:0 5px 18px var(--neon-glow)}
 .editor-wrap{padding:18px 22px;flex:1;display:flex;flex-direction:column}
-
-textarea{
-  width:100%;
-  min-height:420px;
-  flex:1;
-  resize:vertical;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
-  color:var(--text);
-  font-size:15px;
-  line-height:1.8;
-  font-family:'Segoe UI',sans-serif;
-  transition:all 0.3s var(--ease);
-  box-shadow:inset 0 2px 8px rgba(0,0,0,0.5);
-}
-
-textarea:focus{
-  outline:none;
-  border-color:var(--border-focus);
-  background:rgba(18, 18, 34, 0.95);
-  box-shadow:0 0 0 4px rgba(124,58,237,0.2), inset 0 2px 8px rgba(0,0,0,0.4);
-}
-textarea::placeholder{color:var(--muted);transition:opacity 0.2s}
-textarea:focus::placeholder{opacity:0.6}
-
-.editor-info{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-top:12px;
-  font-size:12.5px;
-  color:var(--muted);
-}
-.counter{display:flex;gap:18px}
-.counter span{transition:color 0.2s}
-.counter b{
-  color:var(--accent2);
-  font-weight:700;
-  text-shadow:0 0 10px rgba(167,139,250,0.4);
-  transition:all 0.2s;
-  display:inline-block;
-}
-
-/* ---------- PREKLAD ---------- */
+textarea{width:100%;min-height:430px;flex:1;resize:vertical;background:linear-gradient(180deg,rgba(10,11,22,.95),rgba(13,14,28,.95));border:1px solid var(--border);border-radius:16px;padding:20px;color:var(--text);font-size:15px;line-height:1.82;font-family:'Segoe UI',sans-serif;transition:all .3s var(--ease);box-shadow:inset 0 2px 12px rgba(0,0,0,.6)}
+textarea:focus{outline:none;border-color:var(--border-focus);box-shadow:0 0 0 4px rgba(6,182,212,.16),inset 0 2px 10px rgba(0,0,0,.45)}
+textarea::placeholder{color:var(--muted)}
+.editor-info{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-top:12px;font-size:12.5px;color:var(--muted)}
+.counter{display:flex;gap:16px;flex-wrap:wrap}
+.counter b{color:var(--accent2);font-weight:700;text-shadow:0 0 10px rgba(167,139,250,.4)}
 .translate-box{flex:1;display:flex;flex-direction:column;padding:18px 22px}
 .lang-row{display:flex;gap:12px;margin-bottom:14px;align-items:center}
-
-select{
-  flex:1;
-  padding:11px 16px;
-  border-radius:12px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  color:var(--text);
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  transition:all 0.25s var(--ease);
-  box-shadow:0 4px 14px rgba(0,0,0,0.2);
-}
+select{flex:1;padding:11px 15px;border-radius:12px;background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:13.5px;font-weight:600;cursor:pointer;transition:all .25s var(--ease);box-shadow:0 4px 14px rgba(0,0,0,.2)}
 select:hover{border-color:var(--neon)}
-select:focus{
-  outline:none;
-  border-color:var(--neon);
-  box-shadow:0 0 0 3px rgba(6,182,212,0.25);
-}
+select:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 3px rgba(6,182,212,.25)}
 select option{background:var(--bg2);color:var(--text)}
-
-.swap-btn{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:19px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  color:var(--accent2);
-  transition:all 0.4s var(--bounce);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.swap-btn:hover{
-  border-color:var(--neon);
-  color:var(--neon);
-  transform:rotate(180deg) scale(1.15);
-  box-shadow:0 0 18px var(--neon-glow);
-}
-.swap-btn:active{transform:rotate(180deg) scale(0.95)}
-
-.translate-result{
-  flex:1;
-  min-height:420px;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:20px;
-  font-size:15px;
-  line-height:1.8;
-  overflow-y:auto;
-  white-space:pre-wrap;
-  color:var(--text);
-  box-shadow:inset 0 2px 8px rgba(0,0,0,0.5);
-  transition:all 0.3s var(--ease);
-}
+.swap-btn{width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:19px;background:var(--card2);border:1px solid var(--border);color:var(--accent2);transition:all .4s var(--bounce);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.swap-btn:hover{border-color:var(--neon);color:var(--neon);transform:rotate(180deg) scale(1.15);box-shadow:0 0 18px var(--neon-glow)}
+.translate-result{flex:1;min-height:430px;background:linear-gradient(180deg,rgba(10,11,22,.95),rgba(13,14,28,.95));border:1px solid var(--border);border-radius:16px;padding:20px;font-size:15px;line-height:1.82;overflow-y:auto;white-space:pre-wrap;color:var(--text);box-shadow:inset 0 2px 12px rgba(0,0,0,.6)}
 .translate-result .placeholder{color:var(--muted);font-style:italic}
-
-.translate-result.loading{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  align-items:center;
-  justify-content:center;
-  color:var(--neon);
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:0.5px;
-}
-
-/* Sci-fi pulzujúci dvojitý spinner */
-.spinner{
-  width:42px;
-  height:42px;
-  position:relative;
-  margin-right:0;
-}
-.spinner::before, .spinner::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:50%;
-  border:3px solid transparent;
-}
-.spinner::before{
-  border-top-color:var(--neon);
-  border-right-color:var(--neon);
-  animation:spin 0.75s linear infinite;
-  box-shadow:0 0 16px var(--neon-glow);
-}
-.spinner::after{
-  border-bottom-color:var(--pink);
-  border-left-color:var(--pink);
-  animation:spinReverse 1.1s linear infinite;
-  box-shadow:0 0 16px var(--pink-glow);
-}
-
+.translate-result.loading{display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;color:var(--neon);font-size:15px;font-weight:600}
+.spinner{width:42px;height:42px;position:relative}
+.spinner::before,.spinner::after{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid transparent}
+.spinner::before{border-top-color:var(--neon);border-right-color:var(--neon);animation:spin .75s linear infinite;box-shadow:0 0 16px var(--neon-glow)}
+.spinner::after{border-bottom-color:var(--pink);border-left-color:var(--pink);animation:spinReverse 1.1s linear infinite;box-shadow:0 0 16px var(--pink-glow)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes spinReverse{to{transform:rotate(-360deg)}}
-
-/* ---------- NOTIFIKÁCIA ---------- */
-.toast{
-  position:fixed;
-  bottom:32px;
-  left:50%;
-  transform:translateX(-50%) translateY(100px) scale(0.9);
-  background:rgba(26, 26, 46, 0.88);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(16, 185, 129, 0.5);
-  color:var(--text);
-  padding:14px 28px;
-  border-radius:16px;
-  font-size:14px;
-  font-weight:600;
-  box-shadow:0 12px 40px rgba(0,0,0,.6), 0 0 25px rgba(16,185,129,0.3);
-  transition:transform 0.4s var(--bounce), opacity 0.3s ease;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  opacity:0;
-  pointer-events:none;
-}
-.toast.show{
-  transform:translateX(-50%) translateY(0) scale(1);
-  opacity:1;
-  pointer-events:auto;
-}
-.toast .t-icon{
-  color:var(--success);
-  font-size:20px;
-  animation:toastPop 0.5s var(--bounce);
-}
-
-@keyframes toastPop{
-  0%{transform:scale(0) rotate(-45deg)}
-  100%{transform:scale(1) rotate(0deg)}
-}
-
-/* ---------- FOOTER ---------- */
-footer{
-  text-align:center;
-  padding:30px 20px;
-  color:var(--muted);
-  font-size:12.5px;
-  line-height:1.8;
-  position:relative;
-}
-footer a{
-  color:var(--accent2);
-  text-decoration:none;
-  position:relative;
-  transition:color 0.2s;
-}
-footer a::after{
-  content:'';
-  position:absolute;
-  bottom:-2px;left:0;width:100%;height:1px;
-  background:var(--neon);
-  transform:scaleX(0);
-  transition:transform 0.3s var(--ease);
-}
-footer a:hover{color:var(--neon)}
-footer a:hover::after{transform:scaleX(1)}
-
-/* ---------- ULTRA SLEEK SCROLLBAR ---------- */
-::-webkit-scrollbar{width:7px;height:7px}
-::-webkit-scrollbar-track{background:rgba(15,15,27,0.5)}
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(180deg, var(--accent), var(--pink));
-  border-radius:10px;
-  box-shadow:0 0 8px var(--accent-glow);
-}
-::-webkit-scrollbar-thumb:hover{
-  background:linear-gradient(180deg, var(--accent2), var(--neon));
-}
+.stage-modal{position:fixed;inset:0;z-index:10000;background:rgba(4,4,10,.94);backdrop-filter:blur(22px);display:none;flex-direction:column}
+.stage-modal.open{display:flex;animation:fadeSlide .25s var(--ease)}
+.stage-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px 26px;border-bottom:1px solid var(--border);background:rgba(15,16,32,.85)}
+.stage-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.stage-content{flex:1;overflow-y:auto;padding:50px 24px 120px;text-align:center;max-width:900px;width:100%;margin:0 auto;line-height:1.95}
+.stage-tag{display:inline-block;margin:22px 0 8px;padding:4px 16px;border-radius:999px;background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(236,72,153,.3));border:1px solid rgba(167,139,250,.5);color:var(--accent2);font-size:.75em;font-weight:800;letter-spacing:1.2px}
+.stage-note{color:var(--neon);text-shadow:0 0 12px var(--neon-glow)}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px) scale(.9);background:rgba(18,20,38,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(16,185,129,.5);color:var(--text);padding:13px 26px;border-radius:16px;font-size:14px;font-weight:600;box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 25px rgba(16,185,129,.28);transition:transform .4s var(--bounce),opacity .3s ease;z-index:11000;display:flex;align-items:center;gap:11px;opacity:0;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1;pointer-events:auto}
+.toast .t-icon{color:var(--success);font-size:19px}
+footer{text-align:center;padding:28px 20px 10px;color:var(--muted);font-size:12.5px;line-height:1.8}
+footer a{color:var(--accent2);text-decoration:none}
+footer a:hover{color:var(--neon);text-decoration:underline}
+::-webkit-scrollbar{width:7px;height:7px}::-webkit-scrollbar-track{background:rgba(11,12,24,.5)}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),var(--neon));border-radius:10px}
 </style>
 </head>
 <body>
-
 <div class="container">
-
-  <!-- ================= HEADER ================= -->
   <header>
     <div class="logo">
       <div class="logo-icon">🎵</div>
       <div>
-        <h1>Lyrical <span>Studio</span></h1>
-        <p>Svet na písanie a prekladanie hudobných textov</p>
+        <h1>Lyrical <span>Studio</span> <span class="pro-pill">PRO DAW</span></h1>
+        <p>Svet na písanie, notovanie, nápady a prekladanie hudobných textov</p>
       </div>
     </div>
-    <div class="badge">✓ 100% ZADARMO · bez API kľúča</div>
+    <div class="header-right">
+      <div class="eq-bars" title="Studio Signal Active"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>
+      <button class="stage-launch-btn" onclick="openStageMode()">🎤 Stage / Teleprompter</button>
+      <div class="badge">✓ 100% ZADARMO · bez API kľúča</div>
+    </div>
   </header>
 
-  <div class="workspace">
+  <section class="studio-rack">
+    <div class="rack-tabs">
+      <button class="rack-tab active" onclick="switchTab('notes', this)">🎵 Noty do textu <span class="num-badge">1</span></button>
+      <button class="rack-tab" onclick="switchTab('ideas', this)">💡 EDM & Žánrové nápady <span class="num-badge">2</span></button>
+      <button class="rack-tab" onclick="switchTab('metro', this)">🥁 Metronóm & BPM <span class="num-badge">3</span></button>
+      <button class="rack-tab" onclick="switchTab('analyze', this)">📊 Slabiky & Rýmy <span class="num-badge">4</span></button>
+      <button class="rack-tab" onclick="switchTab('adlibs', this)">⚡ Ad-libs & Formát <span class="num-badge">5</span></button>
+      <button class="rack-tab" onclick="openStageMode()">🎤 Stage Teleprompter <span class="num-badge">6</span></button>
+      <button class="rack-tab" onclick="switchTab('ai', this)">🤖 AI Lyria.9.6 GLN <span class="num-badge">AI</span></button>
+    </div>
+    <div class="rack-body">
+      <div class="rack-pane active" id="pane-notes">
+        <div class="rack-label">🎼 Pridať noty do celého hudobného textu · alebo vložiť na kurzor</div>
+        <div class="rack-row" style="margin-bottom:12px">
+          <select id="noteStyle" style="max-width:290px;padding:8px 12px;font-size:12.5px">
+            <option value="symbols">♪ Hudobné symboly do celého textu (♪ ... ♫)</option>
+            <option value="melody">🎼 Melodické noty stupnice (♪ [C4] ... ♪)</option>
+            <option value="chords">🎹 Akordová progresia nad text ([Am] [F] [C] [G])</option>
+          </select>
+          <button class="pill-btn glow-cyan" onclick="addNotesToWholeSong()">🎵 Pridať noty do celého textu</button>
+          <button class="pill-btn" onclick="removeNotesFromSong()">🧹 Odstrániť noty z textu</button>
+        </div>
+        <div class="rack-row">
+          <span style="font-size:12px;color:var(--muted)">Vložiť notu:</span>
+          <button class="pill-btn note-chip" onclick="insertAtCursor('♪ ')">♪</button><button class="pill-btn note-chip" onclick="insertAtCursor('♫ ')">♫</button><button class="pill-btn note-chip" onclick="insertAtCursor('♬ ')">♬</button><button class="pill-btn note-chip" onclick="insertAtCursor('𝄞 ')">𝄞</button><button class="pill-btn note-chip" onclick="insertAtCursor('♭')">♭</button><button class="pill-btn note-chip" onclick="insertAtCursor('♯')">♯</button>
+          <span style="font-size:12px;color:var(--muted);margin-left:6px">Tóny:</span>
+          <button class="pill-btn note-chip" onclick="insertAtCursor('[C] ')">C</button><button class="pill-btn note-chip" onclick="insertAtCursor('[D] ')">D</button><button class="pill-btn note-chip" onclick="insertAtCursor('[E] ')">E</button><button class="pill-btn note-chip" onclick="insertAtCursor('[F] ')">F</button><button class="pill-btn note-chip" onclick="insertAtCursor('[G] ')">G</button><button class="pill-btn note-chip" onclick="insertAtCursor('[Am] ')">Am</button><button class="pill-btn note-chip" onclick="insertAtCursor('[H] ')">H</button>
+        </div>
+      </div>
 
-    <!-- ================= ĽAVÝ PANEL: EDITOR ================= -->
+      <div class="rack-pane" id="pane-ideas">
+        <div class="rack-label" style="justify-content:space-between"><span>🔥 Kľúčové EDM nápady & Nápady všetkých hudobných žánrov</span><button class="pill-btn glow-purple" onclick="randomGenreIdea()">🎲 Náhodný nápad</button></div>
+        <div class="genre-pills" id="genrePills"></div>
+        <div class="idea-card" id="ideaCard"></div>
+      </div>
+
+      <div class="rack-pane" id="pane-metro">
+        <div class="rack-label">🥁 Studio Metronóm & Tap Tempo (Web Audio Engine)</div>
+        <div class="metro-box">
+          <button class="pill-btn glow-cyan" id="metroToggle" onclick="toggleMetronome()">▶ Spustiť metronóm</button>
+          <div class="bpm-readout"><b id="bpmVal">128</b><span>BPM</span></div>
+          <input type="range" id="bpmSlider" min="60" max="190" value="128" oninput="setBpm(this.value)">
+          <button class="pill-btn" onclick="tapTempo()">👆 Tap Tempo</button>
+          <div class="beat-leds"><div class="beat-led accent" id="led0"></div><div class="beat-led" id="led1"></div><div class="beat-led" id="led2"></div><div class="beat-led" id="led3"></div></div>
+          <div class="rack-row">
+            <button class="pill-btn" onclick="setBpm(90)">R&B 90</button><button class="pill-btn" onclick="setBpm(118)">Pop 118</button><button class="pill-btn" onclick="setBpm(128)">EDM 128</button><button class="pill-btn" onclick="setBpm(140)">Trap/Dub 140</button><button class="pill-btn" onclick="setBpm(174)">DnB 174</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rack-pane" id="pane-analyze">
+        <div class="rack-label" style="justify-content:space-between"><span>📊 Analyzátor rytmu, slabík a rýmových koncoviek</span><button class="pill-btn glow-cyan" onclick="runAnalyzer()">🔄 Prepočítať analýzu</button></div>
+        <div class="analyzer-grid">
+          <div class="analyzer-stats" id="analyzerStats">
+            <div class="stat-line"><span>Spievané riadky:</span><b id="stLines">0</b></div>
+            <div class="stat-line"><span>Celkom slabík:</span><b id="stSyl">0</b></div>
+            <div class="stat-line"><span>Priemer slabík/riadok:</span><b id="stAvg">0</b></div>
+            <div class="stat-line"><span>Odhad dĺžky (@ BPM):</span><b id="stDur">0:00</b></div>
+          </div>
+          <div class="rhyme-list" id="rhymeList"><div style="color:var(--muted);font-size:13px">Klikni na „Prepočítať analýzu“ pre zobrazenie slabík a farebných rýmov.</div></div>
+        </div>
+      </div>
+
+      <div class="rack-pane" id="pane-adlibs">
+        <div class="rack-label">⚡ EDM Drop Cues, Vocal Ad-libs & Formátovanie textu</div>
+        <div class="rack-row" style="margin-bottom:10px">
+          <button class="pill-btn" onclick="insertAtCursor('(1, 2, 3, JUMP!) ')">💥 (1, 2, 3, JUMP!)</button><button class="pill-btn" onclick="insertAtCursor('(Drop the bass!) ')">🔊 (Drop the bass!)</button><button class="pill-btn" onclick="insertAtCursor('(Hands up in the sky!) ')">🙌 (Hands up!)</button><button class="pill-btn" onclick="insertAtCursor('(Yeah, yeah) ')">🎤 (Yeah, yeah)</button><button class="pill-btn" onclick="insertAtCursor('(Ooh-ooh) ')">🎶 (Ooh-ooh)</button><button class="pill-btn" onclick="insertAtCursor('(Echo... echo...) ')">🌊 (Echo...)</button>
+        </div>
+        <div class="rack-row">
+          <button class="pill-btn glow-purple" onclick="formatLyrics('capsFirst')">Aa Veľké písmeno na začiatku riadkov</button><button class="pill-btn" onclick="formatLyrics('cleanSpaces')">✨ Vyčistiť prázdne medzery</button><button class="pill-btn" onclick="formatLyrics('upperChorus')">🔥 Zvýrazniť [Chorus] VEĽKÝM</button>
+        </div>
+      </div>
+
+      <div class="rack-pane" id="pane-ai">
+        <div class="rack-label" style="justify-content:space-between">
+          <span>🤖 Google AI · Lyria.9.6 GLN Generátor nápadov na texty (textové modely bez videa a obrázkov)</span>
+          <span class="meta-tag cyan" id="aiSyncStatus">Nezosynchronizované</span>
+        </div>
+        <div class="rack-row" style="margin-bottom:10px">
+          <input type="password" id="aiApiKey" class="ai-input" placeholder="Vlož Google AI API kľúč (AIza...)" style="flex:1;min-width:220px">
+          <button class="pill-btn glow-cyan" onclick="syncAiModels(false)">🔄 Synchronizovať modely</button>
+          <select id="aiModelSelect" style="flex:1.2;min-width:240px;padding:8px 12px;font-size:12.5px">
+            <option value="">Lyria.9.6 GLN (Zadaj API kľúč pre synchronizáciu)</option>
+          </select>
+        </div>
+        <div class="rack-row">
+          <input type="text" id="aiPrompt" class="ai-input" placeholder="Téma, nálada alebo žáner (napr. letný EDM festival o polnoci, melancholický trap...)" style="flex:1.6;min-width:240px">
+          <button class="pill-btn glow-purple" onclick="askLyriaAi('idea')">✨ Nápad na text</button>
+          <button class="pill-btn" onclick="askLyriaAi('edm')">⚡ EDM Drop & Hook</button>
+          <button class="pill-btn" onclick="askLyriaAi('chorus')">🔥 Refrén & Rýmy</button>
+          <button class="pill-btn" onclick="askLyriaAi('continue')">📝 Pokračovať v mojom texte</button>
+        </div>
+        <div class="ai-output" id="aiOutput" style="display:none"></div>
+        <div class="rack-row" id="aiActions" style="display:none;margin-top:10px">
+          <button class="pill-btn glow-cyan" onclick="insertAiResult()">+ Vložiť do editora</button>
+          <button class="pill-btn" onclick="copyAiResult()">📋 Kopírovať AI nápad</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="workspace">
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><span class="dot"></span> ✍️ Textový editor</div>
         <div style="font-size:12px;color:var(--muted)">Sem vlož celý text naraz</div>
       </div>
-
-      <!-- ŠTRUKTÚRA PIESNE (zabudovaná polička) -->
       <div class="structure-section">
         <h3>🎼 Song Structure — kliknutím vložíš do textu</h3>
         <div class="tag-grid" id="tagGrid"></div>
       </div>
-
-      <!-- NÁSTROJE -->
       <div class="tools-section">
         <button class="tool-btn" onclick="copyText()">📋 Kopírovať celý text</button>
         <button class="tool-btn" onclick="clearText()">🗑️ Vymazať</button>
         <button class="tool-btn" onclick="downloadText()">💾 Stiahnuť .txt</button>
         <button class="tool-btn" onclick="sampleText()">✨ Ukážkový text</button>
+        <button class="tool-btn notes-quick" onclick="addNotesToWholeSong()">🎵 + Noty do celého textu</button>
         <button class="tool-btn primary" onclick="translateText()">🌐 Preložiť do angličtiny</button>
       </div>
-
-      <!-- EDITOR -->
       <div class="editor-wrap">
         <textarea id="lyrics" placeholder="Sem napíš alebo vlož celý text piesne...
 
 Môžeš použiť štruktúru vyššie:
 [Intro] → [Verse 1] → [Pre-Chorus] → [Chorus] ..."></textarea>
         <div class="editor-info">
-          <div class="counter">
-            <span>Words: <b id="wCount">0</b></span>
-            <span>Znaky: <b id="cCount">0</b></span>
-            <span>Riadky: <b id="lCount">0</b></span>
-          </div>
+          <div class="counter"><span>Words: <b id="wCount">0</b></span><span>Znaky: <b id="cCount">0</b></span><span>Riadky: <b id="lCount">0</b></span></div>
           <span>💾 Auto-uložené v prehliadači</span>
         </div>
       </div>
     </div>
 
-    <!-- ================= PRAVÝ PANEL: PREKLAD ================= -->
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><span class="dot blue"></span> 🌐 Preklad — Google Translate</div>
         <div style="font-size:12px;color:var(--muted)">Celý text naraz</div>
       </div>
-
       <div class="translate-box">
         <div class="lang-row">
-          <select id="srcLang">
-            <option value="sk">🇸🇰 Slovenčina</option>
-            <option value="cs">🇨🇿 Čeština</option>
-            <option value="en">🇬🇧 Angličtina</option>
-            <option value="de">🇩🇪 Nemčina</option>
-            <option value="fr">🇫🇷 Francúzština</option>
-            <option value="es">🇪🇸 Španielčina</option>
-            <option value="it">🇮🇹 Taliančina</option>
-            <option value="pl">🇵🇱 Poľština</option>
-            <option value="hu">🇭🇺 Maďarčina</option>
-            <option value="ru">🇷🇺 Ruština</option>
-            <option value="uk">🇺🇦 Ukrajinčina</option>
-            <option value="ja">🇯🇵 Japončina</option>
-          </select>
+          <select id="srcLang"><option value="sk">🇸🇰 Slovenčina</option><option value="cs">🇨🇿 Čeština</option><option value="en">🇬🇧 Angličtina</option><option value="de">🇩🇪 Nemčina</option><option value="fr">🇫🇷 Francúzština</option><option value="es">🇪🇸 Španielčina</option><option value="it">🇮🇹 Taliančina</option><option value="pl">🇵🇱 Poľština</option><option value="hu">🇭🇺 Maďarčina</option><option value="ru">🇷🇺 Ruština</option><option value="uk">🇺🇦 Ukrajinčina</option><option value="ja">🇯🇵 Japončina</option></select>
           <button class="swap-btn" onclick="swapLangs()" title="Vymeniť jazyky">⇄</button>
-          <select id="tgtLang">
-            <option value="en" selected>🇬🇧 Angličtina</option>
-            <option value="sk">🇸🇰 Slovenčina</option>
-            <option value="cs">🇨🇿 Čeština</option>
-            <option value="de">🇩🇪 Nemčina</option>
-            <option value="fr">🇫🇷 Francúzština</option>
-            <option value="es">🇪🇸 Španielčina</option>
-            <option value="it">🇮🇹 Taliančina</option>
-            <option value="pl">🇵🇱 Poľština</option>
-            <option value="hu">🇭🇺 Maďarčina</option>
-            <option value="ru">🇷🇺 Ruština</option>
-            <option value="uk">🇺🇦 Ukrajinčina</option>
-            <option value="ja">🇯🇵 Japončina</option>
-          </select>
+          <select id="tgtLang"><option value="en" selected>🇬🇧 Angličtina</option><option value="sk">🇸🇰 Slovenčina</option><option value="cs">🇨🇿 Čeština</option><option value="de">🇩🇪 Nemčina</option><option value="fr">🇫🇷 Francúzština</option><option value="es">🇪🇸 Španielčina</option><option value="it">🇮🇹 Taliančina</option><option value="pl">🇵🇱 Poľština</option><option value="hu">🇭🇺 Maďarčina</option><option value="ru">🇷🇺 Ruština</option><option value="uk">🇺🇦 Ukrajinčina</option><option value="ja">🇯🇵 Japončina</option></select>
         </div>
-
-        <div class="translate-result" id="result">
-          <div class="placeholder">Preklad sa zobrazí tu...<br><br>1. Napíš/vlož text do editora vľavo<br>2. Vyber jazyky<br>3. Klikni <b>🌐 Preložiť do angličtiny</b></div>
-        </div>
-
-        <div class="tools-section" style="border-bottom:none;padding:14px 0 0 0">
+        <div class="translate-result" id="result"><div class="placeholder">Preklad sa zobrazí tu...<br><br>1. Napíš/vlož text do editora vľavo<br>2. Vyber jazyky<br>3. Klikni <b>🌐 Preložiť do angličtiny</b></div></div>
+        <div class="tools-section" style="border-bottom:none;padding:14px 0 0 0;background:transparent">
           <button class="tool-btn" onclick="copyResult()">📋 Kopírovať preklad</button>
           <button class="tool-btn" onclick="downloadResult()">💾 Stiahnuť preklad</button>
           <button class="tool-btn" onclick="replaceWithResult()">↩️ Použiť preklad v editore</button>
         </div>
       </div>
     </div>
-
   </div>
 
-  <footer>
-    🎵 Lyrical Studio — Svet na písanie hudobných textov<br>
-    Preklad beží na vstavanom <a href="https://translate.google.com" target="_blank">Google Translate</a> · Všetko zadarmo · Texty sa ukladajú len v tvojom prehliadači
-  </footer>
+  <footer>🎵 Lyrical Studio Pro — Svet na písanie hudobných textov<br>Preklad beží na vstavanom <a href="https://translate.google.com" target="_blank">Google Translate</a> · Všetko zadarmo · Texty sa ukladajú len v tvojom prehliadači</footer>
 </div>
 
-<!-- NOTIFIKÁCIA -->
+<div class="stage-modal" id="stageModal">
+  <div class="stage-top">
+    <div style="font-weight:800;font-size:16px">🎤 Stage Teleprompter</div>
+    <div class="stage-controls">
+      <button class="pill-btn glow-cyan" id="scrollToggleBtn" onclick="toggleAutoScroll()">▶ Auto-Scroll</button>
+      <label>Rýchlosť: <input type="range" id="scrollSpeed" min="1" max="10" value="3"></label>
+      <label>Veľkosť: <input type="range" id="stageFontSize" min="18" max="42" value="26" oninput="document.getElementById('stageContent').style.fontSize=this.value+'px'"></label>
+      <button class="pill-btn" onclick="closeStageMode()">✕ Zavrieť (Esc)</button>
+    </div>
+  </div>
+  <div class="stage-content" id="stageContent" style="font-size:26px"></div>
+</div>
 <div class="toast" id="toast"><span class="t-icon">✅</span><span id="toastMsg"></span></div>
 
 <script>
-/* ============================================
-   ŠTRUKTÚRA PIESNE — zabudovaná polička
-   ============================================ */
-const SONG_STRUCTURE = [
-  {tag:"[Intro]",       icon:"🎬"},
-  {tag:"[Verse 1]",     icon:"🎤"},
-  {tag:"[Pre-Chorus]",  icon:"⚡"},
-  {tag:"[Chorus]",      icon:"🔥"},
-  {tag:"[Verse 2]",     icon:"🎤"},
-  {tag:"[Verse 3]",     icon:"🎤"},
-  {tag:"[Pre-Chorus]",  icon:"⚡"},
-  {tag:"[Chorus]",      icon:"🔥"},
-  {tag:"[Bridge]",      icon:"🌉"},
-  {tag:"[Final Chorus]",icon:"👑"},
-  {tag:"[Outro]",       icon:"🌙"},
-  {tag:"[Hook]",        icon:"🪝"},
-  {tag:"[Drop]",        icon:"💥"},
-  {tag:"[Instrumental]",icon:"🎹"},
-  {tag:"[Interlude]",   icon:"🎭"}
-];
+const SONG_STRUCTURE=[{tag:"[Intro]",icon:"🎬"},{tag:"[Verse 1]",icon:"🎤"},{tag:"[Pre-Chorus]",icon:"⚡"},{tag:"[Chorus]",icon:"🔥"},{tag:"[Verse 2]",icon:"🎤"},{tag:"[Verse 3]",icon:"🎤"},{tag:"[Pre-Chorus]",icon:"⚡"},{tag:"[Chorus]",icon:"🔥"},{tag:"[Bridge]",icon:"🌉"},{tag:"[Final Chorus]",icon:"👑"},{tag:"[Outro]",icon:"🌙"},{tag:"[Hook]",icon:"🪝"},{tag:"[Drop]",icon:"💥"},{tag:"[Instrumental]",icon:"🎹"},{tag:"[Interlude]",icon:"🎭"}];
+const editor=document.getElementById('lyrics'),resultBox=document.getElementById('result'),grid=document.getElementById('tagGrid');
+SONG_STRUCTURE.forEach(item=>{const btn=document.createElement('button');btn.className='tag-btn';btn.innerHTML='<span class="tag-icon">'+item.icon+'</span>'+item.tag.replace(/[\[\]]/g,'');btn.onclick=()=>insertTag(item.tag);grid.appendChild(btn);});
 
-const editor = document.getElementById('lyrics');
-const resultBox = document.getElementById('result');
+function insertTag(tag){const start=editor.selectionStart,end=editor.selectionEnd,text=editor.value,prefix=(text.length>0&&!text.endsWith('\n'))?'\n\n':'';editor.value=text.substring(0,start)+prefix+tag+'\n'+text.substring(end);editor.focus();const pos=start+prefix.length+tag.length+1;editor.setSelectionRange(pos,pos);updateCounters();save();showToast('Vložené: '+tag);}
+function updateCounters(){const t=editor.value;document.getElementById('wCount').textContent=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById('cCount').textContent=t.length;document.getElementById('lCount').textContent=t?t.split('\n').length:0;}
+function save(){try{localStorage.setItem('lyricsText',editor.value);}catch(e){}}
+function load(){try{const v=localStorage.getItem('lyricsText');if(v)editor.value=v;const k=localStorage.getItem('lyriaApiKey');if(k){document.getElementById('aiApiKey').value=k;syncAiModels(true);}}catch(e){}updateCounters();}
+editor.addEventListener('input',()=>{updateCounters();save();});
 
-/* Vygenerovanie tlačidiel štruktúry */
-const grid = document.getElementById('tagGrid');
-SONG_STRUCTURE.forEach(item=>{
-  const btn = document.createElement('button');
-  btn.className = 'tag-btn';
-  btn.innerHTML = '<span class="tag-icon">'+item.icon+'</span>'+item.tag.replace(/[\[\]]/g,'');
-  btn.onclick = ()=> insertTag(item.tag);
-  grid.appendChild(btn);
-});
-
-/* Vloženie tagu na koniec / na miesto kurzora */
-function insertTag(tag){
-  const start = editor.selectionStart, end = editor.selectionEnd;
-  const text = editor.value;
-  const prefix = (text.length > 0 && !text.endsWith('\n')) ? '\n\n' : '';
-  editor.value = text.substring(0,start) + prefix + tag + '\n' + text.substring(end);
-  editor.focus();
-  const pos = start + prefix.length + tag.length + 1;
-  editor.setSelectionRange(pos,pos);
-  updateCounters();
-  save();
-  showToast('Vložené: ' + tag);
-}
-
-/* Počítadlá */
-function updateCounters(){
-  const t = editor.value;
-  document.getElementById('wCount').textContent = t.trim() ? t.trim().split(/\s+/).length : 0;
-  document.getElementById('cCount').textContent = t.length;
-  document.getElementById('lCount').textContent = t ? t.split('\n').length : 0;
-}
-
-/* Auto-uloženie do localStorage */
-function save(){ try{ localStorage.setItem('lyricsText', editor.value); }catch(e){} }
-function load(){ try{ const v = localStorage.getItem('lyricsText'); if(v) editor.value = v; }catch(e){} updateCounters(); }
-editor.addEventListener('input', ()=>{ updateCounters(); save(); });
-
-/* ============================================
-   PREKLAD — Google Translate (zdarma, bez API)
-   ============================================ */
 async function translateText(){
-  const text = editor.value.trim();
-  if(!text){ showToast('Najprv napíš alebo vlož text!'); return; }
-
-  const src = document.getElementById('srcLang').value;
-  const tgt = document.getElementById('tgtLang').value;
-
-  resultBox.className = 'translate-result loading';
-  resultBox.innerHTML = '<div class="spinner"></div> Prekladám cez Google Translate...';
-
+  const text=editor.value.trim();if(!text){showToast('Najprv napíš alebo vlož text!');return;}
+  const src=document.getElementById('srcLang').value,tgt=document.getElementById('tgtLang').value;
+  resultBox.className='translate-result loading';resultBox.innerHTML='<div class="spinner"></div> Prekladám cez Google Translate...';
   try{
-    const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=' + src + '&tl=' + tgt + '&dt=t&q=' + encodeURIComponent(text);
-    const res = await fetch(url);
-    if(!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    // data[0] = pole útržkov prekladu — spojíme celý text naraz
-    const translated = data[0].map(seg => seg[0]).join('');
-    resultBox.className = 'translate-result';
-    resultBox.textContent = translated;
-    showToast('Preklad hotový! 🌐');
+    const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl='+src+'&tl='+tgt+'&dt=t&q='+encodeURIComponent(text);
+    const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    resultBox.className='translate-result';resultBox.textContent=data[0].map(seg=>seg[0]).join('');showToast('Preklad hotový! 🌐');
   }catch(err){
-    resultBox.className = 'translate-result';
-    resultBox.innerHTML = '<div class="placeholder">⚠️ Preklad sa nepodaril (' + err.message + ').\n\nSkontroluj internetové pripojenie a skús znova.\nPrípadne otvor preklad priamo: <a href="https://translate.google.com/?sl=' + src + '&tl=' + tgt + '&text=' + encodeURIComponent(text) + '" target="_blank" style="color:#a78bfa">Google Translate</a></div>';
+    resultBox.className='translate-result';
+    resultBox.innerHTML='<div class="placeholder">⚠️ Preklad sa nepodaril ('+err.message+').\n\nSkontroluj internetové pripojenie a skús znova.\nPrípadne otvor preklad priamo: <a href="https://translate.google.com/?sl='+src+'&tl='+tgt+'&text='+encodeURIComponent(text)+'" target="_blank" style="color:#a78bfa">Google Translate</a></div>';
     showToast('Chyba pri preklade ⚠️');
   }
 }
+function swapLangs(){const s=document.getElementById('srcLang'),t=document.getElementById('tgtLang'),tmp=s.value;s.value=t.value;t.value=tmp;}
+function copyText(){if(!editor.value){showToast('Editor je prázdny!');return;}navigator.clipboard.writeText(editor.value).then(()=>showToast('Celý text skopírovaný! 📋'));}
+function copyResult(){const t=resultBox.textContent;if(!t||resultBox.querySelector('.placeholder')||resultBox.classList.contains('loading')){showToast('Najprv prelož text!');return;}navigator.clipboard.writeText(t).then(()=>showToast('Preklad skopírovaný! 📋'));}
+function clearText(){if(!editor.value){showToast('Editor je prázdny!');return;}if(confirm('Naozaj vymazať celý text?')){editor.value='';updateCounters();save();showToast('Text vymazaný 🗑️');}}
+function downloadText(){if(!editor.value){showToast('Editor je prázdny!');return;}triggerDownload(new Blob([editor.value],{type:'text/plain;charset=utf-8'}),'hudobny_text.txt');}
+function downloadResult(){const t=resultBox.textContent;if(!t||resultBox.querySelector('.placeholder')){showToast('Najprv prelož text!');return;}triggerDownload(new Blob([t],{type:'text/plain;charset=utf-8'}),'preklad.txt');}
+function triggerDownload(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);showToast('Stiahnuté: '+name+' 💾');}
+function replaceWithResult(){const t=resultBox.textContent;if(!t||resultBox.querySelector('.placeholder')){showToast('Najprv prelož text!');return;}editor.value=t;updateCounters();save();showToast('Preklad presunutý do editora ↩️');}
+function sampleText(){editor.value=`[Intro]\nPadajú hviezdy v tichú noc\n\n[Verse 1]\nKráčam mestom, ktoré spí,\nneóny horia len pre mňa.\nV pamäti mám tvoje slová,\necho vo vetre, čo ma vzdal.\n\n[Pre-Chorus]\nA všetky cesty vedú k tebe,\naj keď dávno odísť musíš.\n\n[Chorus]\nZostávam v piesni s tebou,\ntvoje meno hrdí jej zvuk.\nUž nič nevráti ten chvíle,\nktorú pieseň znovu zbudí.\n\n[Verse 2]\nKáve na stôl, čas stráca,\nsamota v posteli znamená.\nKaždý ráno, keď vstávam,\nhľadám tvoje stopy v meste.\n\n[Pre-Chorus]\nA všetky cesty vedú k tebe,\naj keď dávno odísť musíš.\n\n[Chorus]\nZostávam v piesni s tebou,\ntvoje meno hrdí jej zvuk.\n\n[Bridge]\nMožno raz, možno nikdy,\nmožno v raji sa skúti znovu.\nAž kým oheň do horí,\ntvoja pieseň v mojej hlave.\n\n[Final Chorus]\nZostávam v piesni s tebou,\ntvoje meno hrdí jej zvuk.\nUž nič nevráti ten chvíle,\nktorú pieseň znovu zbudí.\n\n[Outro]\nPadajú hviezdy v tichú noc...\npadajú hviezdy...`;updateCounters();save();showToast('Ukážkový text vložený ✨');}
 
-function swapLangs(){
-  const s = document.getElementById('srcLang');
-  const t = document.getElementById('tgtLang');
-  const tmp = s.value; s.value = t.value; t.value = tmp;
+function switchTab(id,btn){document.querySelectorAll('.rack-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.rack-pane').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('pane-'+id).classList.add('active');if(id==='analyze')runAnalyzer();}
+function insertAtCursor(str){const start=editor.selectionStart,end=editor.selectionEnd,val=editor.value;editor.value=val.substring(0,start)+str+val.substring(end);editor.focus();const pos=start+str.length;editor.setSelectionRange(pos,pos);updateCounters();save();showToast('Vložené: '+str.trim());}
+
+function cleanLineNotes(line){return line.replace(/^(?:[♪♫♬𝄞]\s*)+/g,'').replace(/(?:\s*[♪♫♬𝄞])+$/g,'').replace(/\[(?:[A-H][#b]?m?(?:7|maj7)?|[A-H][#b]?[0-9])\]\s*/g,'').trim();}
+function addNotesToWholeSong(){
+  const raw=editor.value;if(!raw.trim()){showToast('Najprv napíš alebo vlož text!');return;}
+  const mode=document.getElementById('noteStyle').value,symPairs=[['♪','♪'],['♫','♫'],['♪','♬'],['♫','♪']],scaleNotes=['[C4]','[D4]','[E4]','[G4]','[A4]','[G4]','[E4]','[D4]'],chordProg=['[Am]','[F]','[C]','[G]'];
+  let lyricIdx=0;const out=[];
+  raw.split('\n').forEach(line=>{
+    const trimmed=line.trim();
+    if(!trimmed){out.push('');return;}
+    if(/^\[.*\]$/.test(trimmed)&&!/^\[(?:[A-H][#b]?m?(?:7|maj7)?|[A-H][#b]?[0-9])\]$/.test(trimmed)){out.push(trimmed);return;}
+    if(/^\[[A-H][#b]?m?(?:7|maj7)?\]$/.test(trimmed))return;
+    const clean=cleanLineNotes(trimmed);if(!clean){out.push('');return;}
+    if(mode==='symbols'){const p=symPairs[lyricIdx%symPairs.length];out.push(p[0]+' '+clean+' '+p[1]);}
+    else if(mode==='melody'){const s=(lyricIdx%2===0)?'♪':'♫';out.push(s+' '+scaleNotes[lyricIdx%scaleNotes.length]+' '+clean+' '+s);}
+    else{out.push('🎹 '+chordProg[lyricIdx%chordProg.length]+'  ♪ '+clean);}
+    lyricIdx++;
+  });
+  editor.value=out.join('\n');updateCounters();save();showToast('Noty pridané do celého textu ('+lyricIdx+' riadkov) 🎵');
+}
+function removeNotesFromSong(){
+  if(!editor.value.trim()){showToast('Editor je prázdny!');return;}
+  editor.value=editor.value.split('\n').map(line=>{
+    const t=line.trim();if(/^\[.*\]$/.test(t)&&!/^\[(?:[A-H][#b]?m?(?:7|maj7)?|[A-H][#b]?[0-9])\]$/.test(t))return t;
+    return line.replace(/🎹\s*/g,'').replace(/[♪♫♬𝄞♭♯]/g,'').replace(/\[(?:[A-H][#b]?m?(?:7|maj7)?|[A-H][#b]?[0-9])\]\s*/g,'').replace(/\s{2,}/g,' ').trim();
+  }).join('\n');
+  updateCounters();save();showToast('Noty odstránené z textu 🧹');
 }
 
-/* ============================================
-   NÁSTROJE
-   ============================================ */
-function copyText(){
-  if(!editor.value){ showToast('Editor je prázdny!'); return; }
-  navigator.clipboard.writeText(editor.value).then(()=>showToast('Celý text skopírovaný! 📋'));
+const GENRE_IDEAS=[
+  {id:'prog-house',name:'⚡ EDM: Progressive House',edm:true,bpm:'126–128 BPM',key:'F#m / C#m',chords:'[F#m] - [D] - [A] - [E]',concept:'Eufória na festivale, dlhý emocionálny build-up s gradujúcim snare rollom a obrovský melodický drop pod nočnou oblohou.',hooks:['We are the light that never fades tonight ♪','Feel the bassline rising, touch the sky!','Hold on, let the rhythm take control (1, 2, 3, JUMP!)']},
+  {id:'mel-techno',name:'🌌 EDM: Melodic Techno',edm:true,bpm:'122–125 BPM',key:'Am / Dm',chords:'[Am] - [F] - [Dm] - [E]',concept:'Hypnotické arpeggiá, hlboké vesmírne vokály s dlhým reverbom, pocit nekonečna, temnej noci a laserov.',hooks:['Lost inside the frequency of time ♫','Echoes in the dark, calling out your name','Breathe in the silence before the storm']},
+  {id:'future-bass',name:'💜 EDM: Future Bass',edm:true,bpm:'145–155 BPM',key:'Cmaj / Gmaj',chords:'[Fmaj7] - [G] - [Em] - [Am]',concept:'Silné emocionálne akordy (super-saws), nasekané vocal chops v drope, kontrast krehkej slohy a mohutného refrénu.',hooks:['Shattered neon dreams, falling into you ♪','Every heartbeat hits like lightning in slow-mo','(Ooh-ah-eh) We’re glowing in the dark!']},
+  {id:'dnb',name:'🚀 EDM: Drum & Bass / Liquid',edm:true,bpm:'172–175 BPM',key:'Dm / Gm',chords:'[Dm] - [Bb] - [C] - [Am]',concept:'Rýchly energický breakbeat spojený so soulovým refrénom o úteku mestom v noci a nekonečnom pohybe.',hooks:['Running at the speed of light, no turning back ♬','City lights blur beneath our feet tonight','Let the liquid melody carry us home']},
+  {id:'dubstep',name:'💥 EDM: Dubstep / Bass',edm:true,bpm:'140 BPM',key:'Em / Fm',chords:'[Em] - [C] - [D] - [Em]',concept:'Temná napätá atmosféra pred dropom, krátky ikonický „pre-drop callout“ a agresívny rytmický bass drop.',hooks:['Warning: heavy bass incoming — brace yourself!','Break the chains, shatter the ground! 💥','Can you feel the pressure? Drop the bass!']},
+  {id:'trance',name:'✨ EDM: Trance / Uplifting',edm:true,bpm:'138 BPM',key:'Gm / Eb',chords:'[Gm] - [Eb] - [Bb] - [F]',concept:'Transcendentný príbeh o nádeji, hviezdach a slobode duše. Čisté dlhé tóny a snové refrény.',hooks:['Above the clouds where the stars collide ♪','Forever frozen in this euphoric state','Close your eyes and fly into eternity']},
+  {id:'pop',name:'🎤 Pop / Synth-Pop',edm:false,bpm:'112–122 BPM',key:'Cmaj / Am',chords:'[C] - [G] - [Am] - [F]',concept:'Okamžite zapamätateľný refrén (earworm), jasný príbeh o láske alebo rozchode, moderný rádiový zvuk.',hooks:['Dancing on the edge of midnight, just you and I ♪','Tvoje meno znie v každom rádiu v meste','One look, one spark, and we’re back to the start']},
+  {id:'trap',name:'🔥 Hip-Hop / Trap',edm:false,bpm:'135–145 BPM',key:'Cm / F#m',chords:'[Cm] - [Ab] - [Fm] - [G]',concept:'Úderný rytmický flow, triplet kadencia, príbeh o ceste nahor, 808 basy a sebavedomé ad-libs.',hooks:['Od nuly až na vrchol, nikdy nespím (Yeah, yeah)','Neónové noci, studené mesto, horúci flow','Každý krok bol boj, teraz hrá náš zvuk!']},
+  {id:'rock',name:'🎸 Rock / Alternative',edm:false,bpm:'120–132 BPM',key:'Em / D',chords:'[Em] - [C] - [G] - [D]',concept:'Surová energia gitár, rebélia, vnútorný boj alebo sloboda. Silný dynamický prechod z tichej slohy do kričaného refrénu.',hooks:['Burn the bridges, scream into the night! 🎸','Zlomené struny, ale oheň v nás stále horí','We won’t fade away in the static noise!']},
+  {id:'rnb',name:'🎷 R&B / Soul',edm:false,bpm:'82–94 BPM',key:'Bbm / Ebm',chords:'[Bbm7] - [Eb9] - [Abmaj7] - [Fm7]',concept:'Zmyselná nočná nálada, jemný groove, úprimná spoveď, falzetové ozdoby a teplé elektrické piáno.',hooks:['Slow down the clock, stay until the morning light ♪','Tvoj pohľad v tme hovorí viac než tisíc slov','Velvet shadows, midnight whispers on my skin']},
+  {id:'synthwave',name:'🌆 Synthwave / 80s Retro',edm:false,bpm:'108–118 BPM',key:'Am / F',chords:'[Am] - [F] - [C] - [G]',concept:'Nočná jazda po prázdnej diaľnici, analógové syntetizátory, ružovo-modrý západ slnka a nostalgia 80. rokov.',hooks:['Outrun the shadows down the neon highway 🌆','Chrome hearts beating in an analog world','Midnight cruiser chasing tomorrow’s sun']},
+  {id:'reggaeton',name:'💃 Reggaeton / Latin',edm:false,bpm:'92–98 BPM',key:'Dm / Am',chords:'[Dm] - [Bb] - [Gm] - [A]',concept:'Nákazlivý dembow rytmus, letná horúca noc, tanec, vášeň a chytľavé opakovanie slov v refréne.',hooks:['Súbeme la música, noc patrí iba nám! 💃','One step closer, feel the summer heat','Ritmo en la sangre, hasta el amanecer ♪']},
+  {id:'ballad',name:'🎻 Akustická balada',edm:false,bpm:'68–78 BPM',key:'Gmaj / Em',chords:'[G] - [D/F#] - [Em] - [C]',concept:'Minimalistický klavír alebo akustická gitara, osobný príbeh, poetické obrazy a silná emócia v hlase.',hooks:['V tichu izby ostal už len tvoj dych ♪','Every photograph still whispers who we were','Aj keď čas zmaže stopy, pieseň ostáva']}
+];
+let currentGenreId='prog-house';
+function renderGenrePills(){const box=document.getElementById('genrePills');box.innerHTML='';GENRE_IDEAS.forEach(g=>{const b=document.createElement('button');b.className='genre-pill'+(g.edm?' edm-tag':'')+(g.id===currentGenreId?' active':'');b.textContent=g.name;b.onclick=()=>{currentGenreId=g.id;renderGenrePills();renderIdeaCard();};box.appendChild(b);});}
+function renderIdeaCard(){
+  const g=GENRE_IDEAS.find(x=>x.id===currentGenreId)||GENRE_IDEAS[0];
+  document.getElementById('ideaCard').innerHTML=`<div><div class="idea-meta"><span class="meta-tag cyan">🥁 ${g.bpm}</span><span class="meta-tag">🎼 Tónina: ${g.key}</span><span class="meta-tag pink">🎹 ${g.chords}</span></div><div class="idea-desc">${g.concept}</div><div class="rack-row"><button class="pill-btn glow-purple" onclick="insertGenreTemplate('${g.id}')">✨ Vložiť štruktúru nápadu</button><button class="pill-btn" onclick="insertAtCursor('${g.chords} ')">🎹 Vložiť akordy</button></div></div><div class="idea-hooks"><div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Kľúčové riadky / Drop & Hook nápady:</div>${g.hooks.map(h=>`<div class="hook-item"><span>${h}</span><button onclick="insertAtCursor('${h.replace(/'/g,"\\'")}\\n')">+ Vložiť</button></div>`).join('')}</div>`;
 }
-function copyResult(){
-  const t = resultBox.textContent;
-  if(!t || resultBox.querySelector('.placeholder') || resultBox.classList.contains('loading')){ showToast('Najprv prelož text!'); return; }
-  navigator.clipboard.writeText(t).then(()=>showToast('Preklad skopírovaný! 📋'));
+function insertGenreTemplate(id){const g=GENRE_IDEAS.find(x=>x.id===id);if(!g)return;const tpl=`[Info: ${g.name} | ${g.bpm} | Key: ${g.key} | Chords: ${g.chords}]\n\n[Intro]\n♪ (${g.concept.split('.')[0]}) ♪\n\n[Verse 1]\n${g.hooks[1]||g.hooks[0]}\n\n[Pre-Chorus]\n♪ Napätie stúpa, priprav sa na zlom...\n\n${g.edm?'[Drop / Chorus]':'[Chorus]'}\n${g.hooks[0]}\n${g.hooks[2]||''}\n`;editor.value+=(editor.value.trim()?'\n\n':'')+tpl;updateCounters();save();showToast('Nápad ('+g.name+') vložený do editora 💡');}
+function randomGenreIdea(){const r=GENRE_IDEAS[Math.floor(Math.random()*GENRE_IDEAS.length)];currentGenreId=r.id;renderGenrePills();renderIdeaCard();showToast('Vygenerovaný nápad: '+r.name+' 🎲');}
+
+let audioCtx=null,metroTimer=null,metroRunning=false,currentBpm=128,beatStep=0,tapTimes=[];
+function setBpm(val){currentBpm=Math.max(60,Math.min(190,parseInt(val,10)||128));document.getElementById('bpmVal').textContent=currentBpm;document.getElementById('bpmSlider').value=currentBpm;if(metroRunning){clearInterval(metroTimer);metroTimer=setInterval(playMetroTick,60000/currentBpm);}}
+function playMetroTick(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const now=audioCtx.currentTime,osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),acc=(beatStep%4===0);osc.frequency.setValueAtTime(acc?1280:860,now);gain.gain.setValueAtTime(acc?.35:.2,now);gain.gain.exponentialRampToValueAtTime(.001,now+.055);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.06);document.querySelectorAll('.beat-led').forEach((el,i)=>el.classList.toggle('on',i===(beatStep%4)));beatStep=(beatStep+1)%4;}
+function toggleMetronome(){const btn=document.getElementById('metroToggle');if(metroRunning){clearInterval(metroTimer);metroRunning=false;btn.textContent='▶ Spustiť metronóm';document.querySelectorAll('.beat-led').forEach(el=>el.classList.remove('on'));}else{beatStep=0;playMetroTick();metroTimer=setInterval(playMetroTick,60000/currentBpm);metroRunning=true;btn.textContent='⏹ Zastaviť metronóm';}}
+function tapTempo(){const now=performance.now();if(tapTimes.length&&now-tapTimes[tapTimes.length-1]>2000)tapTimes=[];tapTimes.push(now);if(tapTimes.length>5)tapTimes.shift();if(tapTimes.length>=2){let sum=0;for(let i=1;i<tapTimes.length;i++)sum+=(tapTimes[i]-tapTimes[i-1]);setBpm(Math.round(60000/(sum/(tapTimes.length-1))));}}
+
+function countSyllables(t){const m=t.toLowerCase().replace(/\[.*?\]/g,'').replace(/[♪♫♬𝄞♭♯]/g,'').match(/(?:ia|ie|iu|ô|[aáäeéiíoóuúyý]+)/g);return m?m.length:0;}
+function getRhymeKey(l){const w=l.toLowerCase().replace(/\[.*?\]/g,'').replace(/[♪♫♬𝄞♭♯.,!?;:"'()\-]/g,'').trim().split(/\s+/),last=w[w.length-1]||'';return last.length<2?last:last.normalize('NFD').replace(/[\u0300-\u036f]/g,'').slice(-2);}
+const RHYME_COLORS=[['#a78bfa','rgba(124,58,237,.22)'],['#22d3ee','rgba(6,182,212,.22)'],['#f472b6','rgba(236,72,153,.22)'],['#34d399','rgba(16,185,129,.22)'],['#fbbf24','rgba(245,158,11,.22)'],['#fb7185','rgba(244,63,94,.22)']];
+function runAnalyzer(){
+  const lines=editor.value.split('\n').filter(l=>{const t=l.trim();return t&&!(/^\[.*\]$/.test(t)&&!/^\[(?:[A-H][#b]?m?)\]$/.test(t));});
+  let totalSyl=0;const keyCounts={},keys=lines.map(l=>{const k=getRhymeKey(l);if(k)keyCounts[k]=(keyCounts[k]||0)+1;return k;}),rhymeGroupMap={};let gIdx=0;
+  Object.keys(keyCounts).forEach(k=>{if(keyCounts[k]>1){rhymeGroupMap[k]=String.fromCharCode(65+(gIdx%26));gIdx++;}});
+  const list=document.getElementById('rhymeList');
+  if(!lines.length){list.innerHTML='<div style="color:var(--muted);font-size:13px">Napíš najprv nejaký text do editora.</div>';['stLines','stSyl','stAvg'].forEach(i=>document.getElementById(i).textContent='0');document.getElementById('stDur').textContent='0:00';return;}
+  list.innerHTML='';
+  lines.forEach((line,i)=>{const syl=countSyllables(line);totalSyl+=syl;const letter=rhymeGroupMap[keys[i]];let bHtml='';if(letter){const c=RHYME_COLORS[(letter.charCodeAt(0)-65)%RHYME_COLORS.length];bHtml=`<span class="rhyme-tag" style="color:${c[0]};background:${c[1]};border:1px solid ${c[0]}55">Rým ${letter}</span>`;}const row=document.createElement('div');row.className='rhyme-row';row.innerHTML=`<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(line.trim())}</span><div class="rhyme-badges"><span class="syl-badge">${syl} slab.</span>${bHtml}</div>`;list.appendChild(row);});
+  const sec=Math.round((lines.length*8/currentBpm)*60);
+  document.getElementById('stLines').textContent=lines.length;document.getElementById('stSyl').textContent=totalSyl;document.getElementById('stAvg').textContent=(totalSyl/lines.length).toFixed(1);document.getElementById('stDur').textContent=Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');
 }
-function clearText(){
-  if(!editor.value){ showToast('Editor je prázdny!'); return; }
-  if(confirm('Naozaj vymazať celý text?')){ editor.value=''; updateCounters(); save(); showToast('Text vymazaný 🗑️'); }
-}
-function downloadText(){
-  if(!editor.value){ showToast('Editor je prázdny!'); return; }
-  const blob = new Blob([editor.value],{type:'text/plain;charset=utf-8'});
-  triggerDownload(blob, 'hudobny_text.txt');
-}
-function downloadResult(){
-  const t = resultBox.textContent;
-  if(!t || resultBox.querySelector('.placeholder')){ showToast('Najprv prelož text!'); return; }
-  const blob = new Blob([t],{type:'text/plain;charset=utf-8'});
-  triggerDownload(blob, 'preklad.txt');
-}
-function triggerDownload(blob, name){
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = name;
-  a.click();
-  URL.revokeObjectURL(a.href);
-  showToast('Stiahnuté: ' + name + ' 💾');
-}
-function replaceWithResult(){
-  const t = resultBox.textContent;
-  if(!t || resultBox.querySelector('.placeholder')){ showToast('Najprv prelož text!'); return; }
-  editor.value = t;
-  updateCounters(); save();
-  showToast('Preklad presunutý do editora ↩️');
-}
-function sampleText(){
-  editor.value = `[Intro]
-Padajú hviezdy v tichú noc
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 
-[Verse 1]
-Kráčam mestom, ktoré spí,
-neóny horia len pre mňa.
-V pamäti mám tvoje slová,
-echo vo vetre, čo ma vzdal.
-
-[Pre-Chorus]
-A všetky cesty vedú k tebe,
-aj keď dávno odísť musíš.
-
-[Chorus]
-Zostávam v piesni s tebou,
-tvoje meno hrdí jej zvuk.
-Už nič nevráti ten chvíle,
-ktorú pieseň znovu zbudí.
-
-[Verse 2]
-Káve na stôl, čas stráca,
-samota v posteli znamená.
-Každý ráno, keď vstávam,
-hľadám tvoje stopy v meste.
-
-[Pre-Chorus]
-A všetky cesty vedú k tebe,
-aj keď dávno odísť musíš.
-
-[Chorus]
-Zostávam v piesni s tebou,
-tvoje meno hrdí jej zvuk.
-
-[Bridge]
-Možno raz, možno nikdy,
-možno v raji sa skúti znovu.
-Až kým oheň do horí,
-tvoja pieseň v mojej hlave.
-
-[Final Chorus]
-Zostávam v piesni s tebou,
-tvoje meno hrdí jej zvuk.
-Už nič nevráti ten chvíle,
-ktorú pieseň znovu zbudí.
-
-[Outro]
-Padajú hviezdy v tichú noc...
-padajú hviezdy...`;
-  updateCounters(); save();
-  showToast('Ukážkový text vložený ✨');
+function formatLyrics(action){
+  if(!editor.value.trim()){showToast('Editor je prázdny!');return;}
+  let lines=editor.value.split('\n');
+  if(action==='capsFirst'){editor.value=lines.map(l=>{const m=l.match(/^([♪♫♬𝄞\s]*)(.*)$/);return(!m||!m[2]||m[2].startsWith('['))?l:m[1]+m[2].charAt(0).toUpperCase()+m[2].slice(1);}).join('\n');showToast('Veľké začiatočné písmená aplikované ✨');}
+  else if(action==='cleanSpaces'){editor.value=editor.value.replace(/\n{3,}/g,'\n\n').trim();showToast('Nadbytočné prázdne riadky vyčistené 🧹');}
+  else if(action==='upperChorus'){let inC=false;editor.value=lines.map(l=>{const t=l.trim();if(/^\[.*chorus.*\]$/i.test(t)||/^\[drop.*\]$/i.test(t)){inC=true;return l;}if(/^\[.*\]$/.test(t)){inC=false;return l;}return inC?l.toUpperCase():l;}).join('\n');showToast('Refrén / Drop zvýraznený VEĽKÝM 🔥');}
+  updateCounters();save();
 }
 
-/* Toast notifikácia */
+let scrollAnim=null,autoScrolling=false;
+function openStageMode(){
+  const raw=editor.value.trim();if(!raw){showToast('Najprv napíš text pre Stage mód!');return;}
+  document.getElementById('stageContent').innerHTML=raw.split('\n').map(line=>{const t=line.trim();if(!t)return '<br>';if(/^\[.*\]$/.test(t)&&!/^\[(?:[A-H][#b]?m?(?:7|maj7)?|[A-H][#b]?[0-9])\]$/.test(t))return `<div class="stage-tag">${escapeHtml(t)}</div>`;return '<div>'+escapeHtml(t).replace(/([♪♫♬𝄞♭♯])/g,'<span class="stage-note">$1</span>')+'</div>';}).join('');
+  document.getElementById('stageContent').scrollTop=0;document.getElementById('stageModal').classList.add('open');
+}
+function closeStageMode(){stopAutoScroll();document.getElementById('stageModal').classList.remove('open');}
+function toggleAutoScroll(){if(autoScrolling)stopAutoScroll();else startAutoScroll();}
+function startAutoScroll(){autoScrolling=true;document.getElementById('scrollToggleBtn').textContent='⏸ Pauza';const box=document.getElementById('stageContent');function step(){if(!autoScrolling)return;box.scrollTop+=parseFloat(document.getElementById('scrollSpeed').value)*.35;scrollAnim=requestAnimationFrame(step);}scrollAnim=requestAnimationFrame(step);}
+function stopAutoScroll(){autoScrolling=false;cancelAnimationFrame(scrollAnim);const b=document.getElementById('scrollToggleBtn');if(b)b.textContent='▶ Auto-Scroll';}
+
+/* GOOGLE AI — LYRIA.9.6 GLN SYNC & GENERÁTOR NÁPADOV */
+async function syncAiModels(silent){
+  const key=document.getElementById('aiApiKey').value.trim();
+  if(!key){if(!silent)showToast('Zadaj Google API kľúč!');return;}
+  try{localStorage.setItem('lyriaApiKey',key);}catch(e){}
+  const sel=document.getElementById('aiModelSelect'),st=document.getElementById('aiSyncStatus');
+  st.textContent='Synchronizujem...';
+  try{
+    let all=[],pageToken='';
+    do{
+      const url='https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000&key='+encodeURIComponent(key)+(pageToken?'&pageToken='+encodeURIComponent(pageToken):'');
+      const res=await fetch(url),data=await res.json();
+      if(!res.ok)throw new Error((data.error&&data.error.message)||('HTTP '+res.status));
+      if(Array.isArray(data.models))all=all.concat(data.models);
+      pageToken=data.nextPageToken||'';
+    }while(pageToken);
+    const filtered=all.filter(m=>{
+      const methods=m.supportedGenerationMethods||[];
+      if(!methods.includes('generateContent'))return false;
+      return !/imagen|veo|video|image|embedding|aqa|tts|native-audio|robotics|computer-use|bison|gecko/i.test((m.name||'')+' '+(m.displayName||''));
+    });
+    const usedNames=new Set();sel.innerHTML='';
+    if(!filtered.length){sel.innerHTML='<option value="">Žiadne textové modely nenájdené</option>';st.textContent='0 modelov';return;}
+    filtered.forEach((m,idx)=>{
+      const rawId=(m.name||'').replace(/^models\//,'');
+      let clean=(m.displayName||rawId).replace(/gemini/gi,'').replace(/\s+/g,' ').trim();
+      if(!clean)clean=rawId.replace(/gemini[-_]?/gi,'');
+      let alias='Lyria.9.6 GLN · '+clean;
+      if(usedNames.has(alias))alias='Lyria.9.6 GLN · '+clean+' ['+rawId.replace(/gemini[-_]?/gi,'')+']';
+      if(usedNames.has(alias))alias+=' #'+(idx+1);
+      usedNames.add(alias);
+      const opt=document.createElement('option');opt.value=m.name;opt.textContent=alias;sel.appendChild(opt);
+    });
+    const pref=Array.from(sel.options).find(o=>/flash/i.test(o.value)&&!/lite|8b/i.test(o.value));
+    if(pref)sel.value=pref.value;
+    st.textContent='✓ '+filtered.length+' modelov';
+    if(!silent)showToast('Zosynchronizovaných '+filtered.length+' Lyria.9.6 GLN modelov 🤖');
+  }catch(err){st.textContent='Chyba sync';if(!silent)showToast('Chyba synchronizácie: '+err.message);}
+}
+
+async function askLyriaAi(mode){
+  const key=document.getElementById('aiApiKey').value.trim(),model=document.getElementById('aiModelSelect').value,topic=document.getElementById('aiPrompt').value.trim()||'moderná energická skladba',curText=editor.value.trim();
+  if(!key||!model){showToast('Najprv zadaj API kľúč a klikni Synchronizovať!');return;}
+  if(mode==='continue'&&!curText){showToast('Napíš najprv začiatok textu do editora!');return;}
+  const out=document.getElementById('aiOutput'),acts=document.getElementById('aiActions');
+  out.style.display='block';acts.style.display='none';out.textContent='🤖 Lyria.9.6 GLN tvorí nápad na text...';
+  let prompt='';
+  if(mode==='idea')prompt=`Si profesionálny hudobný textár. Vymysli originálny nápad na pieseň na tému: "${topic}". Napíš stručne: názov, žáner/BPM, tóninu a napíš ukážkový [Verse 1] a [Chorus] v slovenčine (ak téma nie je výslovne v inom jazyku) s hudobnými značkami.`;
+  else if(mode==='edm')prompt=`Si EDM textár a producent. Vytvor silný festivalový EDM nápad na tému: "${topic}". Uveď BPM a napíš [Build-Up], [Pre-Drop Callout] a [Drop / Chorus] s chytľavými vokálnymi frázami a ad-libs.`;
+  else if(mode==='chorus')prompt=`Napíš 2 rôzne verzie chytľavého, rýmujúceho sa refrénu [Chorus] na tému: "${topic}". ${curText?'Inšpiruj sa týmto existujúcim textom:\n'+curText:''}`;
+  else prompt=`Pokračuj v tomto hudobnom texte a napíš plynulo nasledujúcu časť ([Verse], [Bridge] alebo [Chorus]) v rovnakom jazyku, rytme a štýle. Téma/pokyn: "${topic}". Existujúci text:\n${curText}`;
+  try{
+    const mPath=model.startsWith('models/')?model:'models/'+model;
+    const res=await fetch('https://generativelanguage.googleapis.com/v1beta/'+mPath+':generateContent?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+    const data=await res.json();
+    if(!res.ok)throw new Error((data.error&&data.error.message)||('HTTP '+res.status));
+    const reply=(data.candidates&&data.candidates[0]&&data.candidates[0].content&&data.candidates[0].content.parts)?data.candidates[0].content.parts.map(p=>p.text||'').join(''):'';
+    out.textContent=reply.trim()||'Model nevrátil žiadny text.';
+    acts.style.display='flex';showToast('AI nápad vygenerovaný 🤖');
+  }catch(err){out.textContent='⚠️ Chyba AI: '+err.message;showToast('Chyba AI generovania ⚠️');}
+}
+function insertAiResult(){const t=document.getElementById('aiOutput').textContent.trim();if(!t)return;editor.value+=(editor.value.trim()?'\n\n':'')+t;updateCounters();save();showToast('AI nápad vložený do editora ✨');}
+function copyAiResult(){const t=document.getElementById('aiOutput').textContent.trim();if(!t)return;navigator.clipboard.writeText(t).then(()=>showToast('AI nápad skopírovaný 📋'));}
+
 let toastTimer;
-function showToast(msg){
-  const toast = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = msg;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>toast.classList.remove('show'), 2500);
-}
-
-/* Klávesová skratka: Ctrl+Enter = preložiť */
-document.addEventListener('keydown', e=>{
-  if(e.ctrlKey && e.key === 'Enter'){ e.preventDefault(); translateText(); }
-});
-
-/* Štart */
-load();
+function showToast(msg){const toast=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2500);}
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='Enter'){e.preventDefault();translateText();}if(e.key==='Escape')closeStageMode();});
+document.getElementById('aiApiKey').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();syncAiModels(false);}});
+load();renderGenrePills();renderIdeaCard();
 </script>
 </body>
 </html>
